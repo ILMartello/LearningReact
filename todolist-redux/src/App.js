@@ -18,6 +18,13 @@ function storeReducer(state = {}, action) { //QUESTO é IL REDUCER
         ...state.todos //più tutti i todos dello stato (precedente)
       ]
     }
+    case 'REMOVE_TODO': //Utilizzo .slice()
+        return {
+          todos:[
+            ...state.todos.slice(0, action.id),
+            ...state.todos.slice(action.id+1)
+          ]
+        }
     default: return {...state}; //Il default è se non conosco il type
   }
 
@@ -52,6 +59,12 @@ class App extends Component {
      todo //todo:todo
     })
   }
+  removeTodo = (i) =>{
+    store.dispatch({
+     type:'REMOVE_TODO',
+     id: i
+    })
+  }
 
 
   render(){
@@ -66,7 +79,10 @@ class App extends Component {
         <button onClick = { this.addTodo }>Add</button>
         <ul>
           {
-            this.state.todos.map((todo, i)=><li key={i}>{todo}</li>)
+            this.state.todos.map((todo, i)=><li key={i}>{todo} <button onClick={ ()=> { this.removeTodo(i) } }>-</button></li>)
+            //this.state.todos.map((todo, i)=><li key={i}>{todo} <button onClick={ this.removeTodo.bind(null,i) }>-</button></li>)
+            //2 metodi per non far chiamare la funzione nel map con (i) in loop dall'inizio
+            //MyFunction.bind ritorna una funzione con lo stesso corpo di MyFunction ma con un contesto (this) diverso.
           }
         </ul>
     </div>
