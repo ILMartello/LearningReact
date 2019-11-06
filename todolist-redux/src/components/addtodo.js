@@ -1,12 +1,10 @@
-import React,{Fragment} from 'react'
-import {addTodo} from '../actions/index'
-import addnew from '../containers/addnew';
+import React from 'react'
 
 export default function addTodoComponent({addnew}){
     let todoInput;
  
     return( 
-        <Fragment>
+        <div className="addTodo">
             <input defaultValue='' ref ={ (node) =>{todoInput = node}}/>
             <button onClick = {
                 ()=>{
@@ -15,6 +13,6 @@ export default function addTodoComponent({addnew}){
                     }
                     }
                     >Add</button>
-            </Fragment>
+            </div>
 )
 }
