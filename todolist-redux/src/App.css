@@ -36,7 +36,17 @@ li:hover::after{
   float: right;
   margin-right: 5px;
 }
-li span:after{
+li.completed{
+text-decoration: line-through;
+}
+ span.completed:after{
+  content: '\02713';
+  font-size: 28px;
+  padding: 4px;
+  color:green;
+}
+
+ span.uncomplete:after{
   content: '\025A1';
   font-size: 28px;
   padding: 4px;

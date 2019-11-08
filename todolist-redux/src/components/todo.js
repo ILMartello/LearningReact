@@ -1,9 +1,10 @@
 import React from 'react';
-export default function todo({todo, onClick, id}){
+export default function todo({todoItem, onClick, id}){
     
 return(
-<li onClick={()=> onClick(id)}>
-<span></span>
-{todo}</li>
+<li className={todoItem.completed? 'completed':''} onClick={()=> onClick(id)}>
+<span className={todoItem.completed? 'completed':'uncomplete'}></span>
+{todoItem.todo} 
+</li>
     ) ;
 }

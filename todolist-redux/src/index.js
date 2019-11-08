@@ -4,26 +4,44 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {createStore} from 'redux';
-import storeReducer from './reducers/index'
+import { createStore } from 'redux';
+import storeReducer from './reducers/index';
 import {Provider} from 'react-redux';
+let storeTodos={
+    
+    todos:[
 
-let todos = [
-    'Fare la spesa',
-    'Fare i compiti',
-    'Chiamare la mamma'
+    { 
+      id:0, 
+      todo: 'Fare la spesa',
+      completed: false
+      },
+      {
+        id:1,
+        todo: 'Fare i compiti', 
+        completed: true
+        },
+    {
+      id:2, 
+      todo: 'chiamare la mamma', 
+      completed: false
+    }
+
   ]
-  const store =  createStore(storeReducer, {todos: [...todos]});
+};
   
-
+  
+  
+   const store = createStore(storeReducer, { todos: [...storeTodos.todos] },
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );
+store.subscribe(()=>{console.log(store.getState())})
 ReactDOM.render(
-<Provider store={store}>
-<App/>
+<Provider store ={store}>
+  <App />
 </Provider>
 , document.getElementById('root'));
 
-
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+// Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();

@@ -1,14 +1,23 @@
 import React from 'react'
 
-export default function addTodoComponent({addnew}){
+export default function addTodoComponent({addTodo}){
     let todoInput;
  
     return( 
         <div className="addTodo">
-            <input defaultValue='' ref ={ (node) =>{todoInput = node}}/>
+            <input
+            onKeyUp = {
+              (evt)=>{
+                if(+evt.keyCode===13){
+                  addTodo(todoInput.value);
+                  todoInput.value='';
+                }
+              }
+            } 
+            defaultValue='' ref ={ (node) =>{todoInput = node}}/>
             <button onClick = {
                 ()=>{
-                  addnew(todoInput.value);
+                  addTodo(todoInput.value);
                     todoInput.value='';
                     }
                     }

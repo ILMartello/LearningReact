@@ -16,7 +16,7 @@ export default connect(null, mapDispatchToProps)(addTodoComponent);
 */
 
 
-export default connect(null, {addnew: addTodo})(addTodoComponent);
+export default connect(null, {addTodo})(addTodoComponent);
 //La versione corta: come MapDispatchtoProps al posto di una funzione dove mappo manualmente...
 //Connect avvolge addTodo in una dipatch. Quando in addTodoComponent passerò dei parametri a addnew...
 //verranno passati automaticamente a addTodo.

@@ -1,12 +1,14 @@
-import {connect} from 'react-redux'
-import TodoList from '../components/todolist'
-import {removeTodo} from '../actions/index'
+import {connect } from 'react-redux';
+import TodoList from '../components/todolist';
+import {removeTodo, toggleTodo} from '../actions/index'
 
-const mapStateToProps = (state) =>{
+  const mapStateToProps =  (state) => {
     return {
-       todos:[...state.todos] 
+        todos: [...state.todos]
     }
 }
-const myConnect = connect(mapStateToProps, {removeTodo}); 
+const myConnect = connect(mapStateToProps, {removeTodo, toggleTodo});
+
 const MyTodoList = myConnect(TodoList);
-export default MyTodoList;
+
+export default MyTodoList; 
