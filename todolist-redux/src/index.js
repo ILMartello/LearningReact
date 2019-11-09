@@ -4,9 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore } from 'redux';
+import {applyMiddleware, createStore } from 'redux';
 import storeReducer from './reducers/index';
 import {Provider} from 'react-redux';
+
+// il mio storeTodos con la lista di default
 let storeTodos = {
 
     activeFilter:'ALL',
@@ -31,11 +33,41 @@ let storeTodos = {
   ]
 };
   
-  
-  
-   const store = createStore(storeReducer, { ...storeTodos },
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );
-store.subscribe(()=>{console.log(store.getState())})
+//Se nello storage è salvato lo stato, lo sovrascrivo a storetodos
+  if (localStorage.getItem('mytodolist')){
+    const currState = JSON.parse(localStorage.getItem('mytodolist'));
+    if(currState){ storeTodos = currState  }
+  }
+//da ApplyMiddleware ricevo direttamente state e dispatch e ritorno questa struttura in funzione di applyMiddleware
+function logger({getState, dispatch}) {
+  console.log('MIDDLEWARE CHIAMATO ');
+   return function (next) {
+     console.log('PRIMA DELLA CHIAMATA ', getState());
+    return function (action) {
+      console.log('AZIONE ', action);
+      console.log('PRIMA DELL\'AZIONE ', getState());
+        let result =  next(action);
+        console.log('DOPO L\' AZIONE ', getState());
+        console.log('RESULT ', result);
+        return result;
+    }
+  }
+}
+
+
+
+   const store = createStore(storeReducer, { ...storeTodos },applyMiddleware(logger));
+
+   //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+ store.subscribe(
+   ()=>{
+    //Trasformo l'oggetto in una string con json.stringify
+  const currState = JSON.stringify(store.getState());
+  //Ogni volta che cambia lo stato salvo lo stato nel Localstorage
+  localStorage.setItem('mytodolist',currState);
+})
+
 ReactDOM.render(
 <Provider store ={store}>
   <App />
