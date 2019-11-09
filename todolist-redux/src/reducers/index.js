@@ -2,16 +2,12 @@
 export default function storeReducer(state = {}, action) {
     switch(action.type)
     {
-      case 'ADD_TODO':
+      case 'ADD_TODO_FULFILLED':
       return{
         ...state,
         activeFilter:'TODO',
         todos:[ 
-          {
-            id: state.todos.length, 
-            todo:action.payload.text,
-            completed:action.payload.completed
-          },
+           action.payload.data,
           ...state.todos 
         ]
       }
@@ -47,6 +43,12 @@ export default function storeReducer(state = {}, action) {
              ...state,
              activeFilter : action.activeFilter
             }
+
+            case 'TODOS_FULFILLED':
+              return{
+                ...state,
+                todos: action.payload.data
+              }
           
       default: return {...state}; 
     }

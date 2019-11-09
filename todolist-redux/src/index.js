@@ -8,6 +8,8 @@ import {applyMiddleware, createStore, compose } from 'redux';
 import storeReducer from './reducers/index';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
+import promise from 'redux-promise-middleware';
+import axios from 'axios';
 
 // il mio storeTodos con la lista di default
 let storeTodos = {
@@ -44,7 +46,7 @@ let storeTodos = {
 //Mi serve per gestire più middleware dentro il applyMiddleware:
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-   const store = createStore(storeReducer, { ...storeTodos },composeEnhancers( applyMiddleware(logger))
+   const store = createStore(storeReducer, { ...storeTodos },composeEnhancers( applyMiddleware(logger,promise))
    );
 
    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
