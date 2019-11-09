@@ -1,10 +1,11 @@
 import React from 'react';
-const filterlink = ({actionType, children})=>{
+const filterlink = ({onClickFilter, actionType, children})=>{
 return(
 
     <a href="#"
-    onClik={(e)=>{
+    onClick={(e)=>{
         e.preventDefault();
+        onClickFilter(actionType)
     }}>{children}</a>
 )
 };

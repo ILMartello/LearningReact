@@ -7,8 +7,9 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import storeReducer from './reducers/index';
 import {Provider} from 'react-redux';
-let storeTodos={
-    
+let storeTodos = {
+
+    activeFilter:'ALL',
     todos:[
 
     { 
@@ -32,7 +33,7 @@ let storeTodos={
   
   
   
-   const store = createStore(storeReducer, { todos: [...storeTodos.todos] },
+   const store = createStore(storeReducer, { ...storeTodos },
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );
 store.subscribe(()=>{console.log(store.getState())})
 ReactDOM.render(

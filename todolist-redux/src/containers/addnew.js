@@ -6,7 +6,7 @@ import {addTodo} from '../actions/index'
 //Versione LUNGA: mappo manualmente funzione / dispatch in mapDispatchToProps e poi assegno in connect
 const mapDispatchToProps = (dispatch) => {
     return{
-        addnew: (todo) =>{
+        addTodo: (todo) =>{
             dispatch(addTodo(todo))
         }
     }
