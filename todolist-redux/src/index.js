@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {applyMiddleware, createStore } from 'redux';
+import {applyMiddleware, createStore, compose } from 'redux';
 import storeReducer from './reducers/index';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
@@ -39,39 +39,17 @@ let storeTodos = {
     const currState = JSON.parse(localStorage.getItem('mytodolist'));
     if(currState){ storeTodos = currState  }
   }
-//da ApplyMiddleware ricevo direttamente state e dispatch e ritorno questa struttura in funzione di applyMiddleware
-
-function logger({getState, dispatch}) {
-  console.log('MIDDLEWARE CHIAMATO ');
-   return function (next) {
-     console.log('PRIMA DELLA CHIAMATA ', getState());
-    return function (action) {
-      console.log('AZIONE ', action);
-      console.log('PRIMA DELL\'AZIONE ', getState());
-        let result =  next(action);
-        console.log('DOPO L\' AZIONE ', getState());
-        console.log('RESULT ', result);
-        return result;
-    }
-  }
-}
-
-//SCRIVO UN MIDDLWARE COME UNA FUNZIONE CHE RICEVE
-//store (scrivo store ma in realtà riceve getstate() e dispatch)
-//che ritorna una funzione che avrà la funzione next (il prossimo middleware)
-//che a sua volta ritorna una funzione che riceverà la vera action
-const logger2 = store => next => action => {
-  console.log('AZIONE2 ', action);
-  let result =  next(action);
-  console.log('RESULT2 ', result);
-  return result;
-}
 
 
+//Mi serve per gestire più middleware dentro il applyMiddleware:
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-   const store = createStore(storeReducer, { ...storeTodos },applyMiddleware(logger, logger2));
+   const store = createStore(storeReducer, { ...storeTodos },composeEnhancers( applyMiddleware(logger))
+   );
 
    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
+
 
  store.subscribe(
    ()=>{
