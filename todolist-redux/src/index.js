@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import {applyMiddleware, createStore } from 'redux';
 import storeReducer from './reducers/index';
 import {Provider} from 'react-redux';
+import logger from 'redux-logger';
 
 // il mio storeTodos con la lista di default
 let storeTodos = {
@@ -39,6 +40,7 @@ let storeTodos = {
     if(currState){ storeTodos = currState  }
   }
 //da ApplyMiddleware ricevo direttamente state e dispatch e ritorno questa struttura in funzione di applyMiddleware
+
 function logger({getState, dispatch}) {
   console.log('MIDDLEWARE CHIAMATO ');
    return function (next) {
@@ -54,9 +56,20 @@ function logger({getState, dispatch}) {
   }
 }
 
+//SCRIVO UN MIDDLWARE COME UNA FUNZIONE CHE RICEVE
+//store (scrivo store ma in realtà riceve getstate() e dispatch)
+//che ritorna una funzione che avrà la funzione next (il prossimo middleware)
+//che a sua volta ritorna una funzione che riceverà la vera action
+const logger2 = store => next => action => {
+  console.log('AZIONE2 ', action);
+  let result =  next(action);
+  console.log('RESULT2 ', result);
+  return result;
+}
 
 
-   const store = createStore(storeReducer, { ...storeTodos },applyMiddleware(logger));
+
+   const store = createStore(storeReducer, { ...storeTodos },applyMiddleware(logger, logger2));
 
    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
