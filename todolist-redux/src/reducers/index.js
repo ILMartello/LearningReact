@@ -5,6 +5,7 @@ export default function storeReducer(state = {}, action) {
       case 'ADD_TODO':
       return{
         ...state,
+        activeFilter:'TODO',
         todos:[ 
           {
             id: state.todos.length, 
