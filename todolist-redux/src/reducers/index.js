@@ -20,22 +20,17 @@ export default function storeReducer(state = {}, action) {
             ]
           }
 
-      case 'TOGGLE_TODO': 
+      case 'TOGGLE_TODO_FULFILLED': 
            return {
              ...state,
-            todos:[
-              ...state.todos.map((todo)=>{
-              if(todo.id !== action.id){
+            todos:
+              state.todos.map((todo)=>{
+              if(todo.id !== action.payload.data.id){
                 return todo
               }
-              return {
-                ...todo,
-                //Prendo con spread operator le proprietà dentro todo
-                //sovrascrivo la proprietà completed con il suo contrario
-                completed : !todo.completed
-              }
-              })
-            ]
+              return action.payload.data
+           })
+            
           }
 
       case 'SET_FILTER':

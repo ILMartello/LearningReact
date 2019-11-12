@@ -11,30 +11,8 @@ import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import axios from 'axios';
 
-// il mio storeTodos con la lista di default
-let storeTodos = {
 
-    activeFilter:'ALL',
-    todos:[
-
-    { 
-      id:0, 
-      todo: 'Fare la spesa',
-      completed: false
-      },
-      {
-        id:1,
-        todo: 'Fare i compiti', 
-        completed: true
-        },
-    {
-      id:2, 
-      todo: 'chiamare la mamma', 
-      completed: false
-    }
-
-  ]
-};
+let storeTodos={}
   
 //Se nello storage è salvato lo stato, lo sovrascrivo a storetodos
   if (localStorage.getItem('mytodolist')){
@@ -50,6 +28,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
    );
 
    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
 
 
 

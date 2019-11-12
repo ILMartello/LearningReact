@@ -23,10 +23,12 @@ export const removeTodo = (i) =>{
     };
   }
 
-export const toggleTodo = (i) =>{
+export const toggleTodo = (i,value) =>{
     return{
        type:'TOGGLE_TODO',
-       id: i
+       payload: axios.patch(APIURL + '/' + i,{
+         'completed' : value
+       })
       };
     }
 
