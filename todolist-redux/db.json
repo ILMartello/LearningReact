@@ -17,12 +17,12 @@
     },
     {
       "todo": "Non bestemmiare",
-      "completed": false,
+      "completed": true,
       "id": 3
     },
     {
       "todo": "vai bello",
-      "completed": false,
+      "completed": true,
       "id": 4
     },
     {
@@ -32,7 +32,7 @@
     },
     {
       "todo": "prova pending",
-      "completed": false,
+      "completed": true,
       "id": 6
     },
     {
@@ -45,5 +45,8 @@
       "completed": false,
       "id": 8
     }
-  ]
+  ],
+  "activeFilter": {
+    "filter": "ALL"
+  }
 }

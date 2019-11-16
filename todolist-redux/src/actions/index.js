@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {APIURL} from '../config/config';
+import {APIURL, APIFILTERURL} from '../config/config';
 
 export const getTodos = () =>{
   return{
@@ -35,6 +35,6 @@ export const toggleTodo = (i,value) =>{
 export const filterTodo = (filter='ALL') =>{
       return{
          type:'SET_FILTER',
-         activeFilter: filter
+         payload: axios.post(APIFILTERURL,{filter})
         };
       }

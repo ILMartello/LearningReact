@@ -33,10 +33,10 @@ export default function storeReducer(state = {}, action) {
             
           }
 
-      case 'SET_FILTER':
+      case 'SET_FILTER_FULFILLED':
           return{
              ...state,
-             activeFilter : action.activeFilter
+             activeFilter : action.payload.data.filter
             }
 
             case 'TODOS_FULFILLED':
