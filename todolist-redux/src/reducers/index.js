@@ -11,13 +11,10 @@ export default function storeReducer(state = {}, action) {
           ...state.todos 
         ]
       }
-      case 'REMOVE_TODO': 
+      case 'REMOVE_TODO_FULFILLED': 
           return {
             ...state,
-            todos:[
-              ...state.todos.slice(0, action.id),
-              ...state.todos.slice(action.id+1)
-            ]
+            todos: state.todos.filter(ele => ele.id != action.payload.config.id)
           }
 
       case 'TOGGLE_TODO_FULFILLED': 
@@ -25,7 +22,7 @@ export default function storeReducer(state = {}, action) {
              ...state,
             todos:
               state.todos.map((todo)=>{
-              if(todo.id !== action.payload.data.id){
+              if(todo.id !== action.payload.data.id){ 
                 return todo
               }
               return action.payload.data

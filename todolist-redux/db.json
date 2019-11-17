@@ -1,52 +1,6 @@
 {
-  "todos": [
-    {
-      "id": 0,
-      "todo": "Aggiustare il json",
-      "completed": false
-    },
-    {
-      "todo": "Non bestemmiare",
-      "completed": false,
-      "id": 1
-    },
-    {
-      "todo": "aggiornare storie",
-      "completed": false,
-      "id": 2
-    },
-    {
-      "todo": "Non bestemmiare",
-      "completed": true,
-      "id": 3
-    },
-    {
-      "todo": "vai bello",
-      "completed": true,
-      "id": 4
-    },
-    {
-      "todo": "fare fulfilled",
-      "completed": false,
-      "id": 5
-    },
-    {
-      "todo": "prova pending",
-      "completed": true,
-      "id": 6
-    },
-    {
-      "todo": "ssdsd",
-      "completed": true,
-      "id": 7
-    },
-    {
-      "todo": "thegaz",
-      "completed": false,
-      "id": 8
-    }
-  ],
+  "todos": [],
   "activeFilter": {
-    "filter": "ALL"
+    "filter": "COMPLETED"
   }
 }

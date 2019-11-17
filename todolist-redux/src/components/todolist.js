@@ -1,12 +1,13 @@
 import React from 'react';
 import Todo from './todo';
 
-export default function TodoList({todos, removeTodo, toggleTodo}){
+export default function TodoList(props){
     
 return(
 <ul>
 {
- todos.map( (todo) => <Todo id ={todo.id} key={todo.id} onClick = {toggleTodo} todoItem = {todo}/>)
+ props.todos.map( (todo) => <Todo todoItem = {todo} id ={todo.id} key={todo.id}
+{...props}/>)
 } 
 </ul>
 );

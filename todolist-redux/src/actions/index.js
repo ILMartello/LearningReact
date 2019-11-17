@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {APIURL, APIFILTERURL} from '../config/config';
+import { timeout } from 'q';
 
 export const getTodos = () =>{
   return{
@@ -19,9 +20,9 @@ export const addTodo = (todo) =>{
 export const removeTodo = (i) =>{
   return{
      type:'REMOVE_TODO',
-     id: i
+     payload: axios.delete(APIURL + '/' + i, {id: i} )
     };
-  }
+  };
 
 export const toggleTodo = (i,value) =>{
     return{
@@ -30,7 +31,7 @@ export const toggleTodo = (i,value) =>{
          'completed' : value
        })
       };
-    }
+    };
 
 export const filterTodo = (filter='ALL') =>{
       return{
