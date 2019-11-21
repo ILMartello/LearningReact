@@ -15,6 +15,7 @@ switch(filter){
 }
   const mapStateToProps =  (state) => {
     return {
+        ...state,
         todos: filterMyTodos(state.todos,state.activeFilter)
     }
 }

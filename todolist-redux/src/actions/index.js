@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {APIURL, APIFILTERURL} from '../config/config';
-import { timeout } from 'q';
+
 
 export const getTodos = () =>{
   return{

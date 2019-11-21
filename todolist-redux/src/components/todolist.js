@@ -2,7 +2,9 @@ import React from 'react';
 import Todo from './todo';
 
 export default function TodoList(props){
-    
+    if(props.hasError){
+       throw new Error(props.errorMessage)
+    }
 return(
 <ul>
 {

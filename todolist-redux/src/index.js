@@ -9,7 +9,6 @@ import storeReducer from './reducers/index';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
-import axios from 'axios';
 
 
 let storeTodos={}
@@ -17,7 +16,7 @@ let storeTodos={}
 //Se nello storage è salvato lo stato, lo sovrascrivo a storetodos
   if (localStorage.getItem('mytodolist')){
     const currState = JSON.parse(localStorage.getItem('mytodolist'));
-    if(currState){ storeTodos = currState  }
+    if(currState && !currState.hasError){ storeTodos = currState  }
   }
 
 
@@ -34,10 +33,12 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
  store.subscribe(
    ()=>{
+     const state = store.getState();
+     if(!state.hasError){
     //Trasformo l'oggetto in una string con json.stringify
   const currState = JSON.stringify(store.getState());
   //Ogni volta che cambia lo stato salvo lo stato nel Localstorage
-  localStorage.setItem('mytodolist',currState);
+  localStorage.setItem('mytodolist',currState);}
 })
 
 ReactDOM.render(

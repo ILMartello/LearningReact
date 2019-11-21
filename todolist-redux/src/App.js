@@ -6,6 +6,7 @@ import AddNewTodo from './containers/addnew';
 import TodoFooter from './containers/todofootercontainer';
 import {connect} from 'react-redux';
 import {getTodos} from './actions';
+import Errorboundary from './components/errorboundary';
 
 
 class App extends Component {
@@ -20,7 +21,9 @@ componentDidMount(){
        <Header/>
        <div className="container"> 
        <AddNewTodo/>
-       <MyTodoList/>
+       <Errorboundary>
+         <MyTodoList/>
+       </Errorboundary>
        <TodoFooter/>
      </div>
     </div>

@@ -14,7 +14,7 @@ export default function storeReducer(state = {}, action) {
       case 'REMOVE_TODO_FULFILLED': 
           return {
             ...state,
-            todos: state.todos.filter(ele => ele.id != action.payload.config.id)
+            todos: state.todos.filter(ele => ele.id !== action.payload.config.id)
           }
 
       case 'TOGGLE_TODO_FULFILLED': 
@@ -41,7 +41,25 @@ export default function storeReducer(state = {}, action) {
                 ...state,
                 todos: action.payload.data
               }
+
+      //REJECTED ACTIONS
+
+      case 'TODOS_REJECTED':
+      case 'ADD_TODO_REJECTED':
+      case 'SET_FILTER_REJECTED':
+      case 'TOGGLE_TODO_REJECTED':
+      case 'REMOVE_TODO_REJECTED':
+        return{
+          ...state,
+          hasError: true,
+          errorMessage: action.payload.message
+        }
+
+      //END REJECTED
+
+      
           
       default: return {...state}; 
     }
+
   }
