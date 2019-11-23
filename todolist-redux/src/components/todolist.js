@@ -3,8 +3,8 @@ import Todo from './todo';
 import PropTypes from 'prop-types';
 
 export default function TodoList(props){
-    if(props.hasError){
-       throw new Error(props.errorMessage)
+    if(props.error.hasError){
+       throw new Error(props.error.errorMessage)
     }
 return(
 <ul>

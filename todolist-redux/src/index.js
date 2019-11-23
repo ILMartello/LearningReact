@@ -11,12 +11,19 @@ import logger from 'redux-logger';
 import promise from 'redux-promise-middleware';
 
 
-let storeTodos={}
+let storeTodos={
+  todos:[],
+  setFilter:'',
+  error:{
+    hasError:'',
+    errorMessage:''
+  }
+};
   
 //Se nello storage è salvato lo stato, lo sovrascrivo a storetodos
   if (localStorage.getItem('mytodolist')){
     const currState = JSON.parse(localStorage.getItem('mytodolist'));
-    if(currState && !currState.hasError){ storeTodos = currState  }
+    if(currState && !currState.error.hasError){ storeTodos = currState  }
   }
 
 
@@ -34,7 +41,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
  store.subscribe(
    ()=>{
      const state = store.getState();
-     if(!state.hasError){
+     if(!state.error.hasError){
     //Trasformo l'oggetto in una string con json.stringify
   const currState = JSON.stringify(state);
   //Ogni volta che cambia lo stato salvo lo stato nel Localstorage

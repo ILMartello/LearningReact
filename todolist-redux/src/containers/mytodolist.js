@@ -16,7 +16,7 @@ switch(filter){
   const mapStateToProps =  (state) => {
     return {
         ...state,
-        todos: filterMyTodos(state.todos,state.activeFilter)
+        todos: filterMyTodos(state.todos,state.setFilter)
     }
 }
 const myConnect = connect(mapStateToProps, {removeTodo, toggleTodo});
