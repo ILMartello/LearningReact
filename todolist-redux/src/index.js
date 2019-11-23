@@ -21,25 +21,7 @@ let storeTodos={
     errorMessage:''
   }
 };
-  
 
-const Test2 = ({match}) =>{
-
-  return(
-    console.log("DA TEST2: ", match),
-      <div>Test2</div>
-        )
-}
-
-const Test = ({match}) =>{
-  return(
-    console.log("DA TEST: ", match),
-    <React.Fragment>
-      <Route path={`${match.path}/:id`} component={Test2}/>
-      <div>TestComponent</div>
-    </React.Fragment>
-  )
-}
 
 //Se nello storage è salvato lo stato, lo sovrascrivo a storetodos
   if (localStorage.getItem('mytodolist')){
@@ -72,8 +54,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 ReactDOM.render(
 <Provider store ={store}>
   <BrowserRouter>
-    <Route path="/" exact component={App}/>
-    <Route path="/test" component =  {Test}/>
+   <App/>
   </BrowserRouter>
 </Provider>
 , document.getElementById('root'));

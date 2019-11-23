@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
 import Header from './components/header';
-import MyTodoList from './containers/mytodolist';
-import AddNewTodo from './containers/addnew';
-import TodoFooter from './containers/todofootercontainer';
 import {connect} from 'react-redux';
 import {getTodos} from './actions';
-import Errorboundary from './components/errorboundary';
+import {Route} from 'react-router-dom';
 
+import mytodos from './containers/mytodos'
+import Lists from './components/lists';
 
 class App extends Component {
 
@@ -19,13 +18,8 @@ componentDidMount(){
     return (
       <div className="App">
        <Header/>
-       <div className="container"> 
-       <AddNewTodo/>
-       <Errorboundary>
-         <MyTodoList/>
-       </Errorboundary>
-       <TodoFooter/>
-     </div>
+   <Route path="(/|/todos)" component={mytodos}></Route>
+   <Route path="/lists" exact component={Lists}></Route>
     </div>
     );
   }
