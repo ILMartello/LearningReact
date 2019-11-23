@@ -18,12 +18,12 @@
 .App-link {
   color: #09d3ac;
 }
-ul{
+ul.todos{
   padding: 0;
   list-style-type: none;
   min-height: 300px;
 }
-li{
+ul.todos li{
   text-align: left;
   border-bottom: 1px solid #ddd;
   padding: 10px 0px;
@@ -62,4 +62,31 @@ text-decoration: line-through;
 }
 li:last-child{
   border:0px;
+}
+
+ul.menu li{
+  display:inline-block;
+  min-width: 120px;
+}
+ul.menu li a{
+  font-size: .95em;
+  color: #fff;
+  padding: 1em;
+  transition: .2s;
+  text-decoration: none;
+}
+
+ul.menu li a:hover,
+ul.menu li a:active
+{
+padding:1em;
+color: rgb(255, 0, 212);
+background-color: rgb(5, 121, 253);
+text-decoration: underline;
+}
+ 
+ul.menu a.active{
+  color: rgb(255, 0, 212);
+  text-decoration: none;
+  
 }
