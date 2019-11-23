@@ -1,10 +1,10 @@
 import axios from 'axios';
 import {APIURL, APIFILTERURL} from '../config/config';
-
+import {TODOS, ADD_TODO, REMOVE_TODO, TOGGLE_TODO, SET_FILTER} from './actiontypes';
 
 export const getTodos = () =>{
   return{
-    type:'TODOS',
+    type:TODOS,
     payload: axios.get(APIURL)
   }
 }
@@ -12,21 +12,21 @@ export const getTodos = () =>{
 export const addTodo = (todo) =>{
   //ADD_TODO_FULFILLED
    return{
-     type:'ADD_TODO',
+     type:ADD_TODO,
      payload: axios.post(APIURL,{ todo:todo, completed:false})
     };
   };
 
 export const removeTodo = (i) =>{
   return{
-     type:'REMOVE_TODO',
+     type:REMOVE_TODO,
      payload: axios.delete(APIURL + '/' + i, {id: i} )
     };
   };
 
 export const toggleTodo = (i,value) =>{
     return{
-       type:'TOGGLE_TODO',
+       type:TOGGLE_TODO,
        payload: axios.patch(APIURL + '/' + i,{
          'completed' : value
        })
@@ -35,7 +35,7 @@ export const toggleTodo = (i,value) =>{
 
 export const filterTodo = (filter='ALL') =>{
       return{
-         type:'SET_FILTER',
+         type: SET_FILTER,
          payload: axios.post(APIFILTERURL,{filter})
         };
       }

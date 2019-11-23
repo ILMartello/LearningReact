@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 const filterlink = (props)=>{
     
     let  {activeFilter,onClickFilter, actionType, children} = props;
@@ -16,3 +17,12 @@ return(
 };
 
 export default filterlink;
+
+filterlink.propTypes={
+    props: PropTypes.shape({
+        activeFilter: PropTypes.string.isRequired,
+        onClickFilter:PropTypes.func.isRequired,
+        actionType: PropTypes.string.isRequired,
+        childer: PropTypes.element.isRequired
+    })
+}

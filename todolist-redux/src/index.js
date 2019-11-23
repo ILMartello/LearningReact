@@ -36,7 +36,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
      const state = store.getState();
      if(!state.hasError){
     //Trasformo l'oggetto in una string con json.stringify
-  const currState = JSON.stringify(store.getState());
+  const currState = JSON.stringify(state);
   //Ogni volta che cambia lo stato salvo lo stato nel Localstorage
   localStorage.setItem('mytodolist',currState);}
 })

@@ -1,6 +1,17 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "todo": "Prima tasks",
+      "completed": false,
+      "id": 1
+    },
+    {
+      "todo": "Nuova azione",
+      "completed": false,
+      "id": 2
+    }
+  ],
   "activeFilter": {
-    "filter": "COMPLETED"
+    "filter": "ALL"
   }
 }

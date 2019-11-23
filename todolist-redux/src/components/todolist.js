@@ -1,5 +1,6 @@
 import React from 'react';
 import Todo from './todo';
+import PropTypes from 'prop-types';
 
 export default function TodoList(props){
     if(props.hasError){
@@ -14,3 +15,11 @@ return(
 </ul>
 );
 } 
+
+TodoList.propTypes={
+    props: PropTypes.shape({
+        hasError: PropTypes.bool,
+        errorMessage:PropTypes.string,
+        todos:PropTypes.array
+    })
+}

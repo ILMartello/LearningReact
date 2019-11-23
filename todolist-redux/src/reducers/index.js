@@ -1,8 +1,9 @@
+import {TODOS, ADD_TODO, REMOVE_TODO, TOGGLE_TODO, SET_FILTER} from './../actions/actiontypes';
 
 export default function storeReducer(state = {}, action) {
     switch(action.type)
     {
-      case 'ADD_TODO_FULFILLED':
+      case `${ADD_TODO}_FULFILLED`:
       return{
         ...state,
         activeFilter:'TODO',
@@ -11,13 +12,13 @@ export default function storeReducer(state = {}, action) {
           ...state.todos 
         ]
       }
-      case 'REMOVE_TODO_FULFILLED': 
+      case `${REMOVE_TODO}_FULFILLED`:
           return {
             ...state,
             todos: state.todos.filter(ele => ele.id !== action.payload.config.id)
           }
 
-      case 'TOGGLE_TODO_FULFILLED': 
+          case `${TOGGLE_TODO}_FULFILLED`:
            return {
              ...state,
             todos:
@@ -30,13 +31,13 @@ export default function storeReducer(state = {}, action) {
             
           }
 
-      case 'SET_FILTER_FULFILLED':
+          case `${SET_FILTER}_FULFILLED`:
           return{
              ...state,
              activeFilter : action.payload.data.filter
             }
 
-            case 'TODOS_FULFILLED':
+            case `${TODOS}_FULFILLED`:
               return{
                 ...state,
                 todos: action.payload.data
