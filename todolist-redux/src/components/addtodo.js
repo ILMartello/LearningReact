@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-export default function addTodoComponent({addTodo}){
+export default function addTodoComponent({addTodo, list}){
     let todoInput;
  
     return( 
@@ -10,7 +10,7 @@ export default function addTodoComponent({addTodo}){
             onKeyUp = {
               (evt)=>{
                 if(+evt.keyCode===13){
-                  addTodo(todoInput.value);
+                  addTodo(todoInput.value, list);
                   todoInput.value='';
                 }
               }
@@ -18,14 +18,11 @@ export default function addTodoComponent({addTodo}){
             defaultValue='' ref ={ (node) =>{todoInput = node}}/>
             <button onClick = {
                 ()=>{
-                  addTodo(todoInput.value);
+                  addTodo(todoInput.value, list);
                     todoInput.value='';
                     }
                     }
                     >Add</button>
             </div>
 )
-}
-addTodoComponent.propType={
-  addTodo: PropTypes.func.isRequired,
 }

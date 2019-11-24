@@ -8,7 +8,7 @@ export default function header(){
      <ul className="menu">
      <li><NavLink exact activeStyle={{backgroundColor:'green'} } to="/">MY TODO LIST</NavLink></li>
        <li><NavLink activeClassName="active" to="/lists">LISTS</NavLink></li>
-       <li><NavLink activeClassName="active" to="/todos">TODOS</NavLink></li>
+       <li><NavLink activeClassName="active" to="/todos">ALL TODOS</NavLink></li>
        <li><NavLink activeClassName="active" to="/signup">SIGNUP</NavLink></li>
        <li><NavLink activeClassName="active" to="/login">LOGIN</NavLink></li>
      </ul>

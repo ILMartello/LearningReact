@@ -13,13 +13,13 @@ export default class Errorboundary extends Component{
     static getDerivedStateFromError(error){
         return{
             hasError: true,
-            errorMessage: error
+            errorMessage: error.message
         }
     }
 //.. dopo, usato per loggare l'errore
 componentDidCatch(error,info){
         console.error(error, info)
-        console.log ("ERROREEEEEEEEEE:", this.state.errorMessage )
+        console.log ("ERRORE:", this.state.errorMessage )
     }
 
     render() {

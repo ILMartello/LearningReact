@@ -1,18 +1,81 @@
 {
   "todos": [
     {
-      "todo": "Prima tasks",
-      "completed": true,
-      "id": 1
+      "todo": "pane 1",
+      "completed": false,
+      "list": 1,
+      "id": 17
     },
     {
-      "todo": "Nuova azione",
+      "todo": "pane 2",
       "completed": false,
-      "id": 2
+      "list": 1,
+      "id": 18
+    },
+    {
+      "todo": "pane 3",
+      "completed": false,
+      "list": 1,
+      "id": 19
+    },
+    {
+      "todo": "the gaz 1",
+      "completed": false,
+      "list": 2,
+      "id": 20
+    },
+    {
+      "todo": "the gaz 2",
+      "completed": true,
+      "list": 2,
+      "id": 21
+    },
+    {
+      "todo": "the gaz 3",
+      "completed": false,
+      "list": 2,
+      "id": 22
+    },
+    {
+      "todo": "nuova lista 1",
+      "completed": false,
+      "list": 3,
+      "id": 23
+    },
+    {
+      "todo": "nuova lista 2",
+      "completed": false,
+      "list": 3,
+      "id": 25
+    },
+    {
+      "todo": "nuova lista 3",
+      "completed": false,
+      "list": 3,
+      "id": 26
+    },
+    {
+      "todo": "Task di nessuna lista",
+      "completed": false,
+      "list": 0,
+      "id": 27
     }
   ],
   "activeFilter": {
-    "filter": "COMPLETED"
+    "filter": "ALL"
   },
-  "lists": []
+  "lists": [
+    {
+      "name": "comprare il pane",
+      "id": 1
+    },
+    {
+      "name": "the gaz",
+      "id": 2
+    },
+    {
+      "name": "nuova lista",
+      "id": 3
+    }
+  ]
 }
